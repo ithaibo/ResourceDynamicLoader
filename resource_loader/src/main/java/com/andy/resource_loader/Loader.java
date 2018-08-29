@@ -64,7 +64,7 @@ public class Loader {
         }
 
         int srcId = mResources.getIdentifier(name, TYPE_STRING, packageName);
-        if (0 <= srcId) {
+        if (0 >= srcId) {
             return null;
         }
 
@@ -85,7 +85,7 @@ public class Loader {
         }
 
         int srcId = mResources.getIdentifier(name, TYPE_DRAWABLE, packageName);
-        if (0 <= srcId) {
+        if (0 >= srcId) {
             return null;
         }
 

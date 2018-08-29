@@ -14,7 +14,7 @@ import android.widget.Toast;
 import com.andy.resource_loader.Loader;
 
 public class MainActivity extends AppCompatActivity {
-    private static final String APK_NAME = "res_lib-debug.apk";
+    private static final String APK_NAME = "res_lib-debug.zip";
     private static final String PACKAGE_NAME = "com.andy.res_lib";
     private static final String NAME_RESOURCE = "label";
     private static final String TYPE_RESOURCE = "string";
@@ -40,9 +40,6 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.btn_load).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (null == mResourcesLoaded) {
-                    return;
-                }
 //                loadTextLabel();
                 Log.i("Main", "load image from sdcard");
                 loadImage(PACKAGE_NAME);
@@ -50,13 +47,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        findViewById(R.id.btn_load_local).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.i("Main", "load image local");
-                loadImage(getPackageName());
-            }
-        });
+
     }
 
 
