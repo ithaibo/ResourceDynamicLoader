@@ -33,21 +33,19 @@ public class MainActivity extends AppCompatActivity {
 
         mTvResult = findViewById(R.id.tv_result);
 
-        mResourcesLoaded = Loader.loadResourceFromDir(mPath, MainActivity.this);
+        Loader.getInstance().init(MainActivity.this, mPath);
 
         mImageView = findViewById(R.id.img);
 
         findViewById(R.id.btn_load).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 if (null == mResourcesLoaded) {
                     return;
                 }
-
 //                loadTextLabel();
                 Log.i("Main", "load image from sdcard");
-                loadImage(mResourcesLoaded, PACKAGE_NAME);
+                loadImage(PACKAGE_NAME);
 
             }
         });
@@ -56,30 +54,22 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Log.i("Main", "load image local");
-                loadImage(getResources(), getPackageName());
+                loadImage(getPackageName());
             }
         });
     }
 
 
-    private void loadImage(Resources resources, String packageName) {
+    private void loadImage(String packageName) {
         long start = System.currentTimeMillis();
-        int ivId = resources.getIdentifier("img_splash", "drawable", packageName);
-        if (ivId <=0) {
-            return;
-        }
-        Drawable drawable = resources.getDrawable(ivId);
+        Drawable drawable = Loader.getInstance().getDrawable("img_splash", packageName);
         mImageView.setImageDrawable(drawable);
         Log.i("Main", "load cost: " + (System.currentTimeMillis() - start));
     }
 
     private void loadTextLabel() {
-        int idFromResource = mResourcesLoaded.getIdentifier(NAME_RESOURCE, TYPE_RESOURCE,
-                PACKAGE_NAME);
-        Log.i("Main", "idFromResource = " + idFromResource);
-
         try {
-            String stringLoaded = mResourcesLoaded.getString(idFromResource);
+            String stringLoaded = Loader.getInstance().getString(NAME_RESOURCE, PACKAGE_NAME);
             if (null != stringLoaded) {
                 mTvResult.setText(stringLoaded);
             }
