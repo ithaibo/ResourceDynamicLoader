@@ -1,1 +1,1 @@
-include ':app', ':res_lib'
+include ':app', ':res_lib', ':resource_loader'
