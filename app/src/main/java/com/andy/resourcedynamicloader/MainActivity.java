@@ -14,7 +14,7 @@ import android.widget.Toast;
 import com.andy.resource_loader.Loader;
 
 public class MainActivity extends AppCompatActivity {
-    private static final String APK_NAME = "res_lib-debug.zip";
+    private static final String APK_NAME = "res_lib-debug.andy";
     private static final String PACKAGE_NAME = "com.andy.res_lib";
     private static final String NAME_RESOURCE = "label";
     private static final String TYPE_RESOURCE = "string";
