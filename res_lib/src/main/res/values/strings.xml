@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">res_lib</string>
+    <string name="label">hello, this is String resource from individual resource package.</string>
+</resources>
